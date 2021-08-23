@@ -1,0 +1,23 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY SRLATCH IS
+	PORT (
+		S, R : IN STD_LOGIC;
+		Q, QN : OUT STD_LOGIC
+	);
+END SRLATCH;
+
+ARCHITECTURE ARCH OF SRLATCH IS
+
+	SIGNAL Q2, notQ : STD_LOGIC;
+
+
+BEGIN
+
+	Q <= Q2;
+	Q2 <= R NOR notQ; -- a copy of Q
+	notQ <= S NOR Q2; -- use the copy of Q
+	QN <= notQ;
+
+END ARCH;

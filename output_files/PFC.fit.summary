@@ -1,0 +1,16 @@
+Fitter Status : Successful - Mon Aug 23 16:29:28 2021
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : PFC
+Top-level Entity Name : PFC
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 2,118 / 6,272 ( 34 % )
+    Total combinational functions : 1,637 / 6,272 ( 26 % )
+    Dedicated logic registers : 1,258 / 6,272 ( 20 % )
+Total registers : 1258
+Total pins : 78 / 92 ( 85 % )
+Total virtual pins : 0
+Total memory bits : 4,568 / 276,480 ( 2 % )
+Embedded Multiplier 9-bit elements : 12 / 30 ( 40 % )
+Total PLLs : 1 / 2 ( 50 % )

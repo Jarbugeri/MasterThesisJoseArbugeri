@@ -1,0 +1,201 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "LED[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[3]",
+					"strict" : false
+				},
+				{
+					"name" : "CS[1]",
+					"strict" : false
+				},
+				{
+					"name" : "CS[2]",
+					"strict" : false
+				},
+				{
+					"name" : "CS[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ADCLK[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[8]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[9]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[10]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[11]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[12]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[13]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[14]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[15]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[16]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[17]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[18]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[19]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[20]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[21]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[22]",
+					"strict" : false
+				},
+				{
+					"name" : "SAIDA[23]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[7]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[9]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[17]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[18]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[19]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[20]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[23]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[24]",
+					"strict" : false
+				},
+				{
+					"name" : "BT[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tms",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tck",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdi",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdo",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
