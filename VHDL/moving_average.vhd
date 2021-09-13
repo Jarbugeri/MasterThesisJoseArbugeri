@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity moving_average is
 generic (
   G_NBIT                     : integer := 13;
-  G_AVG_LEN_LOG              : integer := 3 );
+  G_AVG_LEN_LOG              : integer := 2 );
 port (
   i_clk                      : in  std_logic;
   i_rstb                     : in  std_logic;
@@ -17,7 +17,7 @@ end moving_average;
 
 architecture rtl of moving_average is
 
-type t_moving_average is array (0 to 2**G_AVG_LEN_LOG-1) of signed(G_NBIT-1 downto 0);
+type t_moving_average is array (0 to 2**G_AVG_LEN_LOG-1) of signed(G_NBIT-1 downto 0); -- G_NBIT-1 to G_NBIT 
 signal p_moving_average                 : t_moving_average;
 signal r_acc                            : signed(G_NBIT+G_AVG_LEN_LOG-1 downto 0);  -- average accumulator
 

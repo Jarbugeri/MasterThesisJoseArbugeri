@@ -57,7 +57,7 @@ ARCHITECTURE rtl OF modulador IS
     END COMPONENT hrpwm;
 
     -- Constantes
-	CONSTANT Vp : INTEGER := 2 ** 6 - 1; -- 63
+	CONSTANT Vp : INTEGER := (2 ** 6) - 1; -- 63
 
     -- Signals
     SIGNAL Vin_mV, Iin_mA : INTEGER := 0;
@@ -132,7 +132,7 @@ BEGIN
 			    --Sa <= NOT(pwmP) AND     Ep;
 			    --Sb <= (pwmN)    AND NOT(Ep);
 
-			   -- Valores medios
+			-- Valores medios
                 Sa <=  pwmP AND     Ep  ;
                 Sb <=  pwmP AND NOT(Ep) ;
 

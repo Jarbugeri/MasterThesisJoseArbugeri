@@ -65,7 +65,6 @@ BEGIN
 	main : PROCESS (clk0, rst)
 	BEGIN
 		IF rst = '1' THEN
-
 			counter <= 0;
 			shadow <= 0;
 			dir <= '0';

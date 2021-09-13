@@ -68,17 +68,17 @@ CHIP  "PFC"  ASSIGNED TO AN: EP4CE6E22C8
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-SAIDA[13]                    : 1         : output : 2.5 V             :         : 1         : N              
+SAIDA[0]                     : 1         : output : 2.5 V             :         : 1         : N              
 SAIDA[9]                     : 2         : output : 2.5 V             :         : 1         : N              
-SAIDA[19]                    : 3         : output : 2.5 V             :         : 1         : N              
+SAIDA[18]                    : 3         : output : 2.5 V             :         : 1         : N              
 GND                          : 4         : gnd    :                   :         :           :                
 VCCINT                       : 5         : power  :                   : 1.2V    :           :                
 ~ALTERA_ASDO_DATA1~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 6         : input  : 2.5 V             :         : 1         : N              
-SAIDA[3]                     : 7         : output : 2.5 V             :         : 1         : N              
+SAIDA[17]                    : 7         : output : 2.5 V             :         : 1         : N              
 ~ALTERA_FLASH_nCE_nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 8         : input  : 2.5 V             :         : 1         : N              
 nSTATUS                      : 9         :        :                   :         : 1         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 10        :        :                   :         : 1         :                
-SAIDA[14]                    : 11        : output : 2.5 V             :         : 1         : N              
+SAIDA[5]                     : 10        : output : 2.5 V             :         : 1         : N              
+SAIDA[10]                    : 11        : output : 2.5 V             :         : 1         : N              
 ~ALTERA_DCLK~                : 12        : output : 2.5 V             :         : 1         : N              
 ~ALTERA_DATA0~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 13        : input  : 2.5 V             :         : 1         : N              
 nCONFIG                      : 14        :        :                   :         : 1         :                
@@ -95,9 +95,9 @@ GND+                         : 24        :        :                   :         
 GND+                         : 25        :        :                   :         : 2         :                
 VCCIO2                       : 26        : power  :                   : 2.5V    : 2         :                
 GND                          : 27        : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 28        :        :                   :         : 2         :                
+SAIDA[11]                    : 28        : output : 2.5 V             :         : 2         : N              
 VCCINT                       : 29        : power  :                   : 1.2V    :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 30        :        :                   :         : 2         :                
+SAIDA[14]                    : 30        : output : 2.5 V             :         : 2         : N              
 LED[0]                       : 31        : output : 2.5 V             :         : 2         : Y              
 LED[1]                       : 32        : output : 2.5 V             :         : 2         : Y              
 LED[2]                       : 33        : output : 2.5 V             :         : 2         : Y              
@@ -147,14 +147,14 @@ GPIO[24]                     : 76        : bidir  : 2.5 V             :         
 BT[1]                        : 77        : input  : 2.5 V             :         : 5         : Y              
 VCCINT                       : 78        : power  :                   : 1.2V    :           :                
 GND                          : 79        : gnd    :                   :         :           :                
-SAIDA[21]                    : 80        : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 80        :        :                   :         : 5         :                
 VCCIO5                       : 81        : power  :                   : 2.5V    : 5         :                
 GND                          : 82        : gnd    :                   :         :           :                
-SAIDA[2]                     : 83        : output : 2.5 V             :         : 5         : N              
-SAIDA[17]                    : 84        : output : 2.5 V             :         : 5         : N              
-SAIDA[23]                    : 85        : output : 2.5 V             :         : 5         : N              
-SAIDA[12]                    : 86        : output : 2.5 V             :         : 5         : N              
-SAIDA[18]                    : 87        : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 83        :        :                   :         : 5         :                
+SAIDA[19]                    : 84        : output : 2.5 V             :         : 5         : N              
+SAIDA[20]                    : 85        : output : 2.5 V             :         : 5         : N              
+SAIDA[13]                    : 86        : output : 2.5 V             :         : 5         : N              
+SAIDA[6]                     : 87        : output : 2.5 V             :         : 5         : N              
 GND+                         : 88        :        :                   :         : 5         :                
 GND+                         : 89        :        :                   :         : 5         :                
 GND+                         : 90        :        :                   :         : 6         :                
@@ -165,24 +165,24 @@ MSEL0                        : 94        :        :                   :         
 GND                          : 95        : gnd    :                   :         :           :                
 MSEL1                        : 96        :        :                   :         : 6         :                
 MSEL2                        : 97        :        :                   :         : 6         :                
-SAIDA[16]                    : 98        : output : 2.5 V             :         : 6         : N              
-SAIDA[1]                     : 99        : output : 2.5 V             :         : 6         : N              
-SAIDA[0]                     : 100       : output : 2.5 V             :         : 6         : N              
+SAIDA[1]                     : 98        : output : 2.5 V             :         : 6         : N              
+SAIDA[7]                     : 99        : output : 2.5 V             :         : 6         : N              
+SAIDA[4]                     : 100       : output : 2.5 V             :         : 6         : N              
 ~ALTERA_nCEO~ / RESERVED_OUTPUT_OPEN_DRAIN : 101       : output : 2.5 V             :         : 6         : N              
 VCCINT                       : 102       : power  :                   : 1.2V    :           :                
-SAIDA[15]                    : 103       : output : 2.5 V             :         : 6         : N              
-SAIDA[20]                    : 104       : output : 2.5 V             :         : 6         : N              
-SAIDA[22]                    : 105       : output : 2.5 V             :         : 6         : N              
-SAIDA[11]                    : 106       : output : 2.5 V             :         : 6         : N              
+SAIDA[2]                     : 103       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 104       :        :                   :         : 6         :                
+SAIDA[23]                    : 105       : output : 2.5 V             :         : 6         : N              
+SAIDA[22]                    : 106       : output : 2.5 V             :         : 6         : N              
 VCCA2                        : 107       : power  :                   : 2.5V    :           :                
 GNDA2                        : 108       : gnd    :                   :         :           :                
 VCCD_PLL2                    : 109       : power  :                   : 1.2V    :           :                
-SAIDA[10]                    : 110       : output : 2.5 V             :         : 7         : N              
+SAIDA[21]                    : 110       : output : 2.5 V             :         : 7         : N              
 SAIDA[8]                     : 111       : output : 2.5 V             :         : 7         : N              
-SAIDA[4]                     : 112       : output : 2.5 V             :         : 7         : N              
-SAIDA[7]                     : 113       : output : 2.5 V             :         : 7         : N              
-SAIDA[5]                     : 114       : output : 2.5 V             :         : 7         : N              
-SAIDA[6]                     : 115       : output : 2.5 V             :         : 7         : N              
+SAIDA[16]                    : 112       : output : 2.5 V             :         : 7         : N              
+SAIDA[15]                    : 113       : output : 2.5 V             :         : 7         : N              
+SAIDA[3]                     : 114       : output : 2.5 V             :         : 7         : N              
+SAIDA[12]                    : 115       : output : 2.5 V             :         : 7         : N              
 VCCINT                       : 116       : power  :                   : 1.2V    :           :                
 VCCIO7                       : 117       : power  :                   : 2.5V    : 7         :                
 GND                          : 118       : gnd    :                   :         :           :                

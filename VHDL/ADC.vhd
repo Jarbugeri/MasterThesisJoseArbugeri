@@ -72,9 +72,13 @@ ARCHITECTURE rtl OF ADC IS
   
   SIGNAL data : data_array;
   SIGNAL clk_o : clk_array;
-
+  SIGNAL busy_array : clk_array;  
+  SIGNAL clk_sample : STD_LOGIC;
+  SIGNAL enable_adc : STD_LOGIC;
 
 BEGIN
+
+  clk_sample <= enable;
 
   ADC_gen : FOR i IN 0 TO ADCs - 1 GENERATE
     ADC_x : spi_controller
@@ -84,7 +88,7 @@ BEGIN
     PORT MAP(
       clk => clk,
       rst => rst,
-      enable => enable,
+      enable => enable_adc,
       cpol => CPOL,
       cpha => CPHA,
       cont => CONT,
@@ -94,11 +98,23 @@ BEGIN
       sck => clk_o(i),
       cs => cs(i),
       sdo => OPEN,
-      busy => OPEN,
+      busy => busy_array(i),
       rx_data => data(i)
     );
   END GENERATE ADC_gen;
-  
+
+  proc_name: process(clk_sample, rst, busy_array)
+  begin
+    if rst = '1' then
+      enable_adc <= '0';
+    elsif rising_edge(clk_sample) then
+      enable_adc <= '1';
+    end if;
+    if (busy_array(0) AND busy_array(1) AND busy_array(2)) = '1' THEN
+      enable_adc <= '0';
+    end if;    
+  end process proc_name;
+
   cclk <= clk_o(0);
   ADC0 <= UNSIGNED(data(0)(ADC_width - 1 DOWNTO 0));
   ADC1 <= UNSIGNED(data(1)(ADC_width - 1 DOWNTO 0));

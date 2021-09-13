@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Mon Aug 23 16:29:09 2021
+Analysis & Synthesis Status : Successful - Mon Sep 13 08:34:55 2021
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : PFC
 Top-level Entity Name : PFC
 Family : Cyclone IV E
-Total logic elements : 2,271
-    Total combinational functions : 1,634
-    Dedicated logic registers : 1,258
-Total registers : 1258
+Total logic elements : 2,902
+    Total combinational functions : 1,719
+    Dedicated logic registers : 1,924
+Total registers : 1924
 Total pins : 78
 Total virtual pins : 0
-Total memory bits : 4,568
+Total memory bits : 180,728
 Embedded Multiplier 9-bit elements : 12
 Total PLLs : 1

@@ -19,18 +19,19 @@ ARCHITECTURE ARCH OF AUTOCONTROLE IS
 	-- Auto Controle
 	
 	CONSTANT KiS : real := 0.08484298245614035087; -- Ki = Vp^2/(2*Po*Vo) = 311^2/(2*1500*380)
-	CONSTANT Qr  : real := 16.0;
+	CONSTANT Qr  : real := 20.0;
 
 	-- Conversão
-	CONSTANT Q : INTEGER := 16;
+	CONSTANT Q : INTEGER := 20;
 	SIGNAL Ki_Q16 : INTEGER := INTEGER(KiS * (2.0 ** Qr));
 
 	-- Contantes representação real
-	CONSTANT KPr : real := 0.0020172; -- 0.038
-	CONSTANT KIr : real := 1700.7665 * (1.0/(750.0e3)); --1574.0
+	CONSTANT KPr : real := 0.0074061; -- 0.0074061
+	CONSTANT KIrc : real := 1574.0; -- 222.3311
+	CONSTANT KIr : real := KIrc * (1.0/(750.0e3)); --1574.0
 	
 	CONSTANT Kvr : real := 0.030991735537190; 
-	CONSTANT KRr : real :=  SQRT(1700.0) ;    -- SQRT(1574.0)
+	CONSTANT KRr : real :=  SQRT(KIrc) ;    -- SQRT(1574.0)
 	
 	-- Contantes na base Q
 	CONSTANT KP : INTEGER := INTEGER(KPr * 2.0 ** Qr);
@@ -43,7 +44,7 @@ ARCHITECTURE ARCH OF AUTOCONTROLE IS
 	
 
 	--Anti windup
-	CONSTANT maximo : INTEGER := INTEGER( (2.0 ** Qr) * (510.0) );
+	CONSTANT maximo : INTEGER := INTEGER( (2.0 ** Qr) * (509.0) );
 	CONSTANT minimo : INTEGER := INTEGER( (2.0 ** Qr) * (0.0)   );
 	SIGNAL   e_sat, feed_0, feed_1 : INTEGER;
 
@@ -100,9 +101,9 @@ BEGIN
 
 		
 	-- Valores Médios (Não Func)
-	duty <= Y_sat / ( 2 ** (Q - 9) );
+	--duty <= Y_sat / ( 2 ** (Q - 9) );
 
 	-- Auto Controle (OK)
-	--duty <= to_integer(shift_right(to_signed(Iin_mA * Ki_Q16, 64), Q + 1));
+	duty <= to_integer(shift_right(to_signed(Iin_mA * Ki_Q16, 64), Q + 1));
 	
 END ARCHITECTURE;
