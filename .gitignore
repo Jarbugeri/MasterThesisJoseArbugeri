@@ -1,0 +1,13 @@
+**/.jxbrowser.userdata/*
+**/RemoteSystemsTempFiles/*
+
+**/.metadata/*
+**/.plugins/*
+
+**/Release/*
+**/Debug/*
+**/settings/*
+**/launch/*
+**/.settings/*
+**/.launch/*
+**/.launches/*
