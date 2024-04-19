@@ -1,0 +1,142 @@
+/*
+ * sogi_pll.c
+ *
+ *  Created on: 28 de jan de 2023
+ *      Author: Jose
+ */
+
+/**************
+ *  Includes  *
+ **************/
+
+#include "so_filter.h"
+
+/*************
+ * Functions *
+ *************/
+
+/**
+ * @brief Recalcula os coeficientes dos filtros lowpass
+ *
+ * @param so_filter     Ponteiro para a estrutura do so_filter
+ * @param fs            Frequencia de atualizacao do so_filter em Hz
+ * @param Q             Fator de qualidade do filtro
+ * @param fc            Frequencia de corte em Hertz
+ */
+void so_filter_update_coeff_lowpass_cla(so_filter_t * so_filter)
+{
+    //!< Variaveis auxiliares para minimizar processamento
+    float a = so_filter->ts * so_filter->ts * so_filter->wc *  so_filter->wc;   //!< (ts*wc)^2
+    float b = 2.0 * so_filter->ts * so_filter->wc / so_filter->Q;               //!< 2*ts*wc/Q
+    float aux_div = 1.0 / ( 4 + b + a );                                        //!< 1 / (4 + 2*ts*wc/Q + (ts*wc)^2)
+
+    //!< Coeficientes do filtro de eixo direto
+    so_filter->coeffs.a1 = (2.0 * a - 8)    * aux_div;
+    so_filter->coeffs.a2 = (a - b + 4)      * aux_div;
+    so_filter->coeffs.b0 = a                * aux_div;
+    so_filter->coeffs.b1 = 2.0 * so_filter->coeffs.b0;
+    so_filter->coeffs.b2 = so_filter->coeffs.b0;
+}
+
+/**
+ * @brief Recalcula os coeficientes dos filtros lowpass
+ *
+ * @param so_filter     Ponteiro para a estrutura do so_filter
+ * @param fs            Frequencia de atualizacao do so_filter em Hz
+ * @param Q             Fator de qualidade do filtro
+ * @param fc            Frequencia de corte em Hertz
+ */
+void so_filter_update_coeff_bandpass_cla(so_filter_t * so_filter)
+{
+    //!< Variaveis auxiliares para minimizar processamento
+    float a = so_filter->ts * so_filter->ts * so_filter->wc *  so_filter->wc;   //!< (ts*wc)^2
+    float b = 2.0 * so_filter->ts * so_filter->wc / so_filter->Q;               //!< 2*ts*wc/Q
+    float aux_div = 1.0 / ( 4 + b + a );                                        //!< 1 / (4 + 2*ts*wc/Q + (ts*wc)^2)
+
+    //!< Coeficientes do filtro de eixo direto
+    so_filter->coeffs.a1 = (2.0 * a - 8)    * aux_div;
+    so_filter->coeffs.a2 = (a - b + 4)      * aux_div;
+    so_filter->coeffs.b0 = b                * aux_div;
+    so_filter->coeffs.b1 = 0.0;
+    so_filter->coeffs.b2 = - so_filter->coeffs.b0;
+}
+
+/**
+ * @brief Recalcula os coeficientes dos filtros lowpass
+ *
+ * @param so_filter     Ponteiro para a estrutura do so_filter
+ * @param fs            Frequencia de atualizacao do so_filter em Hz
+ * @param Q             Fator de qualidade do filtro
+ * @param fc            Frequencia de corte em Hertz
+ */
+void so_filter_update_coeff_notch_cla(so_filter_t * so_filter)
+{
+    //!< Variaveis auxiliares para minimizar processamento
+    float a = so_filter->ts * so_filter->ts * so_filter->wc *  so_filter->wc;   //!< (ts*wc)^2
+    float b = 2.0 * so_filter->ts * so_filter->wc / so_filter->Q;               //!< 2*ts*wc/Q
+    float c = a + 4;                                                            //!< (ts*wc)^2 + 4
+    float aux_div = 1.0 / ( b + c );                                            //!< 1 / (4 + 2*ts*wc/Q + (ts*wc)^2)
+
+    //!< Coeficientes do filtro de eixo direto
+    so_filter->coeffs.a1 = (2.0 * a - 8)    * aux_div;
+    so_filter->coeffs.a2 = (c - b)          * aux_div;
+    so_filter->coeffs.b0 = c                * aux_div;
+    so_filter->coeffs.b1 = so_filter->coeffs.a1;
+    so_filter->coeffs.b2 = so_filter->coeffs.b0;
+}
+
+/**
+ * @brief Recalcula os coeficientes dos filtros lowpass
+ *
+ * @param so_filter     Ponteiro para a estrutura do so_filter
+ * @param fs            Frequencia de atualizacao do so_filter em Hz
+ * @param Q             Fator de qualidade do filtro
+ * @param fc            Frequencia de corte em Hertz
+ */
+void so_filter_update_coeff_highpass_cla(so_filter_t * so_filter)
+{
+    float a = so_filter->ts * so_filter->ts * so_filter->wc *  so_filter->wc;   //!< (ts*wc)^2
+    float b = 2.0 * so_filter->ts * so_filter->wc / so_filter->Q;               //!< 2*ts*wc/Q
+    float c = a + 4;                                                            //!< (ts*wc)^2 + 4
+    float aux_div = 1.0 / ( b + c );                                            //!< 1 / (4 + 2*ts*wc/Q + (ts*wc)^2)
+    //!< Coeficientes do filtro de eixo direto
+    so_filter->coeffs.a1 = (2.0 * a - 8)    * aux_div;
+    so_filter->coeffs.a2 = (c - b)          * aux_div;
+    so_filter->coeffs.b0 = 4.0              * aux_div;
+    so_filter->coeffs.b1 = - 2.0 * so_filter->coeffs.b0;
+    so_filter->coeffs.b2 = so_filter->coeffs.b0;
+}
+
+/**
+ * @brief Reseta e inicializa filtro com valor desejado
+ *
+ * @param so_filter Ponteiro para a estrutura do filtro
+ * @param value     Valore inicial de reset do filtro
+ */
+void so_filter_reset_cla(so_filter_t * so_filter, float value){
+    so_filter->states.u2 = value;
+    so_filter->states.u1 = value;
+    so_filter->states.u0 = value;
+    so_filter->states.y2 = value;
+    so_filter->states.y1 = value;
+    so_filter->states.y0 = value;
+}
+
+/**
+ * @brief Roda a estrutura do filtro SO
+ *
+ * @param so_filter Ponteiro para a estrutura do filtro
+ * @param input     Entrada do filtro
+ */
+void so_filter_run_cla(so_filter_t * so_filter, float input){
+    so_filter->states.u2 = so_filter->states.u1;
+    so_filter->states.u1 = so_filter->states.u0;
+    so_filter->states.u0 = input;
+    so_filter->states.y2 = so_filter->states.y1;
+    so_filter->states.y1 = so_filter->states.y0;
+    so_filter->states.y0 =  so_filter->states.u0 * so_filter->coeffs.b0 +
+                            so_filter->states.u1 * so_filter->coeffs.b1 +
+                            so_filter->states.u2 * so_filter->coeffs.b2 -
+                            so_filter->states.y2 * so_filter->coeffs.a2 -
+                            so_filter->states.y1 * so_filter->coeffs.a1;
+}

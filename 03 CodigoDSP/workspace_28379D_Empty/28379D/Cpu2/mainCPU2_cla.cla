@@ -1,0 +1,29 @@
+//#############################################################################
+
+//#############################################################################
+
+//
+// Included Files
+//
+#include "mainCPU2_cla_shared.h"
+
+//
+// Defines
+//
+
+
+__interrupt void Cla1Task1 ( void )
+{
+    INIT_COUNTER(counter_cla);
+
+
+    WaveGenerator_sine_single_run_cla(&WaveGenerator);
+
+
+    END_COUNTER(counter_cla);
+}
+
+
+//
+// End of file
+//

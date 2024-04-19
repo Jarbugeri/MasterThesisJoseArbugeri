@@ -1,0 +1,48 @@
+/*
+ * WaveGenerator.c
+ *
+ *  Created on: 26 de nov de 2022
+ *      Author: Jose
+ */
+
+/**
+ * @defgroup WaveGenerator WaveGenerator
+ * @{
+ */
+
+/************
+ * Includes *
+ ************/
+
+#include "WaveGenerator.h"
+
+/*************
+ * Functions *
+ *************/
+
+/**
+ * @brief Gerador senoidal monofasico
+ *
+ * @param SineWave Ponteiro para estrutura WaveGenerator
+ *
+ * @warning
+ */
+void WaveGenerator_sine_single_run_cla(WaveGenerator_t * SineWave)
+{
+    //!< Atualiza tempo
+    SineWave->t = SineWave->t + SineWave->Delta;
+
+    //!< Reseta quando complar um ciclo
+    if (SineWave->t >= TWOPI){
+        SineWave->t -= TWOPI;
+    }
+
+    //!< Atualiza as saidas
+    SineWave->a = SineWave->A * CLAsin(SineWave->t + THETA_A);
+
+}
+
+
+/**
+ * @}
+ */

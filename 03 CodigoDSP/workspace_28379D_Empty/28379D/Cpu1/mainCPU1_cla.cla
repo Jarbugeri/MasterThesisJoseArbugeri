@@ -1,0 +1,76 @@
+//#############################################################################
+
+//#############################################################################
+
+//
+// Included Files
+//
+#include "mainCPU1_cla_shared.h"
+
+//
+// Defines
+//
+
+
+__interrupt void Cla1Task1 ( void )
+{
+    INIT_COUNTER(counter_cla);
+
+    /*           Low-pass Filter  Band-pass Filter
+     *              __________      __________
+     *             |          |    |          |
+     * Iin.raw --->|  LPO(z)  |--->|  BPF(z)  |---> Iin.filtered
+     *             |__________|    |__________|
+     *
+     */
+    //so_filter_run_cla(&so_filter_lowpass_current_input,  pfc.current_in.raw);
+    so_filter_run_cla(&so_filter_bandpass_current_input, pfc.current_in.raw);
+
+    /*           Low-pass Filter  Band-pass Filter
+     *              __________      __________
+     *             |          |    |          |
+     * Vin.raw --->|  LPO(z)  |--->|  BPF(z)  |---> Vin.filtered
+     *             |__________|    |__________|
+     *
+     */
+    //so_filter_run_cla(&so_filter_lowpass_voltage_input,  pfc.voltage_in.raw );
+    so_filter_run_cla(&so_filter_bandpass_voltage_input,  pfc.voltage_in.raw );
+
+    /*            Low-pass Filter  Notch Filter (120Hz)
+     *              __________      __________
+     *              |          |    |          |
+     * Vout.raw --->|  LPO(z)  |--->|  BSF(z)  |---> Vout.filtered
+     *              |__________|    |__________|
+     *
+     */
+    so_filter_run_cla(&so_filter_lowpass_voltage_output, pfc.voltage_out.raw);
+    so_filter_run_cla(&so_filter_notch_voltage_output,   so_filter_lowpass_voltage_output.states.y0);
+
+
+    /*           Low-pass Filter  Band-pass Filter   Sogi_pll
+     *              __________      __________      ___________
+     *             |          |    |          |    |           |
+     * Vin.raw --->|  LPO(z)  |--->|  BPF(z)  |--->|  SogiPLL  |----> Sogi.wt
+     *             |__________|    |__________|    |___________|  |-> Sogi.omega
+     *                                                            |-> Sogi.freq
+     *                                                            |-> Sogi.sine
+     *                                                            |-> Sogi.cosine
+     *                                                            |-> Sogi.zero_crossing
+     *
+     */
+
+    //sogi_pll.wc = sogi_pll.omega;
+    //limiter_saturation(sogi_pll.wc, TWO_PI * 50.0, TWO_PI * 70.0);
+
+    //sogi_pll_update_coeff_sogi_cla(&sogi_pll);
+
+    sogi_pll_run_cla(&sogi_pll, so_filter_bandpass_voltage_input.states.y0);
+
+    END_COUNTER(counter_cla);
+
+}
+
+
+//
+// End of file
+//
